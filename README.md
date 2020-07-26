@@ -17,3 +17,11 @@ with git.Repo(pathlib.Path(__file__).resolve().parent) as repository:
     repository.index.remove([static], True, r=True)
     repository.index.commit('')#git commit --allow-empty-message -m ''
     repository.remote().push()
+
+import aiohttp, asyncio, json, os
+async def f():
+    async with aiohttp.ClientSession() as session:
+        for _ in ('springboot', 'koa'):
+            async with session.post(f'https://api.github.com/repos/chaowenGUO/{_}/dispatches', data=json.dumps({'event_type':'ping'}).encode(), auth=aiohttp.BasicAuth('chaowenGUO', os.getenv('GITHUB'))) as _: pass
+       
+asyncio.run(f())
