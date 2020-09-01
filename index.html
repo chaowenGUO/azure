@@ -5,9 +5,12 @@
   </head>
   <body>
     <script type="text/javascript">
-          pyodide.loadPackage('numpy').then(() => {
-              console.log(pyodide.runPython('print(numpy.array([1,2,3,4]))'));
-          });
+          languagePluginLoader.then(() => {
+              pyodide.loadPackage(['numpy']).then(() => {
+                  console.log(pyodide.runPython('print(numpy.array([1,2,3,4,5]))'))
+              }
+          })
+    </script>
     </script>
   </body>
 </html>
