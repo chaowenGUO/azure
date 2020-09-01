@@ -7,8 +7,10 @@
     <script type="text/javascript">
           languagePluginLoader.then(() => {
               pyodide.loadPackage(['numpy']).then(() => {
-                  console.log(pyodide.runPython(`import numpy;
-                                                 print(numpy.array([1,2,3,4,5]))`))
+                  console.log(pyodide.runPython(`
+import numpy
+print(numpy.array([1,2,3,4,5]))
+`))
               })
           })
     </script>
