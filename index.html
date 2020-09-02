@@ -5,7 +5,7 @@
   </head>
   <body>
     <script>
-          languagePluginLoader.then(() => {
+          languagePluginLoader.then(async () => {
               await pyodide.loadPackage(['numpy'])
               console.log(pyodide.runPython(`
 import numpy
