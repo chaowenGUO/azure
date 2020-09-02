@@ -6,7 +6,7 @@
   <body>
       <script type='module'>
           await languagePluginLoader
-          await pyodide.loadPackage('sympy')
+          await pyodide.loadPackage('numpy')
           let response = await globalThis.fetch('index.py')
           response = response.ok ? await response.text() : ''
           pyodide.runPython(response)
