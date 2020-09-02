@@ -1,2 +1,3 @@
-import numpy, js
-js.console.log(numpy.array([1,2,3,4,5]))
+import sympy, js
+x= sympy.symbols('x', real=True)
+js.console.log(str(sympy.Integral(sympy.sqrt(1/x), x)))
