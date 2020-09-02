@@ -4,14 +4,13 @@
       <script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
   </head>
   <body>
-    <script type="text/javascript">
+    <script>
           languagePluginLoader.then(() => {
-              pyodide.loadPackage(['numpy']).then(() => {
-                  console.log(pyodide.runPython(`
+              await pyodide.loadPackage(['numpy'])
+              console.log(pyodide.runPython(`
 import numpy
 print(numpy.array([1,2,3,4,5]))
 `))
-              })
           })
     </script>
     </script>
