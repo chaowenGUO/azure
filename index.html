@@ -5,14 +5,12 @@
   </head>
   <body>
     <script>
-          languagePluginLoader.then(async () => {
-              await pyodide.loadPackage(['numpy'])
-              console.log(pyodide.runPython(`
+await languagePluginLoader
+await pyodide.loadPackage(['numpy'])
+console.log(pyodide.runPython(`
 import numpy
 print(numpy.array([1,2,3,4,5]))
 `))
-          })
-    </script>
     </script>
   </body>
 </html>
