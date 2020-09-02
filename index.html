@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
-  </head>
   <body>
-    <script>
+    <script type='module'>
 await Promise.resolve(console.log('🎉'))
-await languagePluginLoader
-await pyodide.loadPackage(['numpy'])
-console.log(pyodide.runPython(`
-import numpy
-print(numpy.array([1,2,3,4,5]))
-`))
     </script>
   </body>
 </html>
