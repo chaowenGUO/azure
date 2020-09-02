@@ -5,7 +5,10 @@
     </head>
     <body>
 <script type='module'>
-await Promise.resolve(console.log('🎉'))
+await pyodide.loadPackage(['numpy'])
+console.log(`
+import numpy
+print(numpy.array([1,2,3,4]))`)
 </script>
     </body>
 </html>
