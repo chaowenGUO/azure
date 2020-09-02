@@ -5,6 +5,7 @@
   </head>
   <body>
     <script>
+await Promise.resolve(console.log('🎉'))
 await languagePluginLoader
 await pyodide.loadPackage(['numpy'])
 console.log(pyodide.runPython(`
