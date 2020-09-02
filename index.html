@@ -4,7 +4,7 @@
       <script src='https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js'></script>
   </head>
   <body>
-      <script>
+      <script type='module'>
           await languagePluginLoader
           await pyodide.loadPackage('sympy')
           let response = await globalThis.fetch('index.py')
