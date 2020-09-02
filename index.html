@@ -7,7 +7,7 @@
 <script type='module'>
 await languagePluginLoader
 await pyodide.loadPackage(['numpy'])
-console.log(`
+console.log(pyodide.runPython(`
 import numpy
 print(numpy.array([1,2,3,4]))`)
 </script>
