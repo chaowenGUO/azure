@@ -8,29 +8,13 @@
       <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=MML_CHTML'></script>
   </head>
   <body>
-      <math>
-  <apply>
-    <int/>
-    <bvar>
-        <ci>x</ci>
-    </bvar>
-    <apply>
-        <root/>
-        <apply>
-            <power/>
-            <ci>x</ci>
-            <cn>-1</cn>
-        </apply>
-    </apply>
-</apply>
-</math>
       <math></math>
       <script type='module'>
           await languagePluginLoader
           await pyodide.loadPackage('sympy')
           let response = await globalThis.fetch('index.py')
           response = response.ok ? await response.text() : ''
-          //pyodide.runPython(response)
+          pyodide.runPython(response)
       </script>
   </body>
 </html>
