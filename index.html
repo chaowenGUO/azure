@@ -5,7 +5,7 @@
       <title>latex</title>
       <script src='https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js'></script>
       <script>globalThis.MathJax = {MathML: {extensions: ['content-mathml.js']}}</script>
-      <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=MML_CHTML'></script>
+      <script defer src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=MML_CHTML'></script>
   </head>
   <body>
       <math></math>
@@ -16,5 +16,21 @@
           response = response.ok ? await response.text() : ''
           pyodide.runPython(response)
       </script>
+      <math>
+  <apply>
+    <int/>
+    <bvar>
+        <ci>x</ci>
+    </bvar>
+    <apply>
+        <root/>
+        <apply>
+            <power/>
+            <ci>x</ci>
+            <cn>-1</cn>
+        </apply>
+    </apply>
+</apply>
+</math>
   </body>
 </html>
