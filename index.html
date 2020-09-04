@@ -15,9 +15,9 @@
           //response = response.ok ? await response.text() : ''
           //pyodide.runPython(response)
           //globalThis.MathJax.typeset()
-        let promise = Promise.resolve();  // Used to hold chain of typesetting calls
+        //let promise = Promise.resolve();  // Used to hold chain of typesetting calls
 
-function typeset(code) {
+/*function typeset(code) {
   promise = promise.then(() => {code(); return MathJax.typesetPromise()})
                    .catch((err) => console.log('Typeset failed: ' + err.message));
   return promise;
@@ -26,7 +26,10 @@ function typeset(code) {
   const math = document.querySelector('div');
   math.innerHTML = String.raw`\(\dfrac{a}{1-a^2}\)`
   return math;
-});
+});*/
+        const math = document.querySelector('div')
+  math.innerHTML = String.raw`\(\dfrac{a}{1-a^2}\)`
+  Mathjax.typeSet()
       </script>
     \(\dfrac{a}{1-a^2}\)
   </body>
