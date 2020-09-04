@@ -13,7 +13,7 @@
           await pyodide.loadPackage('sympy')
           let response = await globalThis.fetch('index.py')
           response = response.ok ? await response.text() : ''
-          math.innerHTML = pyodide.runPython(response)
+          globalThis.document.querySelector('math').innerHTML = pyodide.runPython(response)
         //let promise = Promise.resolve();  // Used to hold chain of typesetting calls
 
 /*function typeset(code) {
