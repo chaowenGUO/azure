@@ -9,14 +9,7 @@
   <body>
       <math></math>
       <script type='module'>
-          await languagePluginLoader
-          /*await pyodide.loadPackage('sympy')
-          let response = await globalThis.fetch('index.py')
-          response = response.ok ? await response.text() : ''
-          const a = pyodide.runPython(response)
-          console.log(a)*/
-          //globalThis.document.querySelector('math').innerHTML = pyodide.runPython(response)
-        let promise = Promise.resolve();  // Used to hold chain of typesetting calls
+                let promise = Promise.resolve();  // Used to hold chain of typesetting calls
 
 function typeset(code) {
   promise = promise.then(() => {code(); return MathJax.typesetPromise()})
@@ -28,6 +21,13 @@ function typeset(code) {
   math.innerHTML = '<mrow><mrow><mo>&int;</mo></mrow><mfenced><msup><mrow><mfenced><msup><mrow><mfenced><mi>x</mi></mfenced></mrow><mn>-1</mn></msup></mfenced></mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></msup></mfenced><mo>&dd;</mo><mi>x</mi></mrow>'
   return math;
 });
+          await languagePluginLoader
+          /*await pyodide.loadPackage('sympy')
+          let response = await globalThis.fetch('index.py')
+          response = response.ok ? await response.text() : ''
+          const a = pyodide.runPython(response)
+          console.log(a)*/
+          //globalThis.document.querySelector('math').innerHTML = pyodide.runPython(response)
       </script>
   </body>
 </html>
