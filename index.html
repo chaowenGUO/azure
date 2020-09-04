@@ -16,6 +16,8 @@
           const a = pyodide.runPython(response)
           console.log(a)*/
 document.querySelector('div').appendChild(MathJax.mathml2chtml('<math><mrow><mrow><mo>&int;</mo></mrow><mfenced><msup><mrow><mfenced><msup><mrow><mfenced><mi>x</mi></mfenced></mrow><mn>-1</mn></msup></mfenced></mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></msup></mfenced><mo>&dd;</mo><mi>x</mi></mrow></math>'))
+        MathJax.startup.document.clear();
+      MathJax.startup.document.updateDocument();
         
       </script>
   </body>
