@@ -16,11 +16,7 @@ function typeset(code) {
                    .catch((err) => console.log('Typeset failed: ' + err.message));
   return promise;
 }
-        typeset(() => {
-  const math = document.querySelector('math');
-  math.innerHTML = '<mrow><mrow><mo>&int;</mo></mrow><mfenced><msup><mrow><mfenced><msup><mrow><mfenced><mi>x</mi></mfenced></mrow><mn>-1</mn></msup></mfenced></mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></msup></mfenced><mo>&dd;</mo><mi>x</mi></mrow>'
-  return math;
-});
+       
           await languagePluginLoader
           await pyodide.loadPackage('sympy')
           let response = await globalThis.fetch('index.py')
@@ -28,6 +24,13 @@ function typeset(code) {
           const a = pyodide.runPython(response)
           console.log(a)
           //globalThis.document.querySelector('math').innerHTML = pyodide.runPython(response)
+        
+         typeset(() => {
+  const math = document.querySelector('math');
+  math.innerHTML = '<mrow><mrow><mo>&int;</mo></mrow><mfenced><msup><mrow><mfenced><msup><mrow><mfenced><mi>x</mi></mfenced></mrow><mn>-1</mn></msup></mfenced></mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></msup></mfenced><mo>&dd;</mo><mi>x</mi></mrow>'
+  return math;
+});
+        
       </script>
   </body>
 </html>
