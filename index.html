@@ -13,7 +13,7 @@
           await pyodide.loadPackage('sympy')
           let response = await globalThis.fetch('index.py')
           response = response.ok ? await response.text() : ''
-          document.querySelector('div').appendChild(globalThis.MathJax.mathml2chtml(['<math>', pyodide.runPython(response), '</math>'].join('')))
+          globalThis.document.body.prepend(globalThis.MathJax.mathml2chtml(['<math>', pyodide.runPython(response), '</math>'].join('')))
           globalThis.MathJax.startup.document.clear()
           globalThis.MathJax.startup.document.updateDocument()
       </script>
