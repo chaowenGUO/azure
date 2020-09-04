@@ -9,12 +9,12 @@
   <body>
       <math></math>
       <script type='module'>
-          await languagePluginLoader
+          /*await languagePluginLoader
           await pyodide.loadPackage('sympy')
           let response = await globalThis.fetch('index.py')
           response = response.ok ? await response.text() : ''
           const a = pyodide.runPython(response)
-          console.log(a)
+          console.log(a)*/
           //globalThis.document.querySelector('math').innerHTML = pyodide.runPython(response)
         let promise = Promise.resolve();  // Used to hold chain of typesetting calls
 
