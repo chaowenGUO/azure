@@ -1,3 +1,3 @@
-import sympy, js
+import sympy
 x= sympy.symbols('x', real=True)
 sympy.mathml(sympy.Integral(sympy.sqrt(1/x), x), printer='presentation')
