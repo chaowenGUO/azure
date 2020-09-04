@@ -14,36 +14,19 @@
           let response = await globalThis.fetch('index.py')
           response = response.ok ? await response.text() : ''
           console.log(pyodide.runPython(response))
-          globalThis.document.querySelector('math').innerHTML = pyodide.runPython(response)
-        //let promise = Promise.resolve();  // Used to hold chain of typesetting calls
+          //globalThis.document.querySelector('math').innerHTML = pyodide.runPython(response)
+        let promise = Promise.resolve();  // Used to hold chain of typesetting calls
 
-/*function typeset(code) {
+function typeset(code) {
   promise = promise.then(() => {code(); return MathJax.typesetPromise()})
                    .catch((err) => console.log('Typeset failed: ' + err.message));
   return promise;
 }
         typeset(() => {
-  const math = document.querySelector('div');
-  math.innerHTML = String.raw`\(\dfrac{a}{1-a^2}\)`
+  const math = document.querySelector('math');
+  math.innerHTML = pyodide.runPython(response)
   return math;
-});*/
-/*        const math = document.querySelector('math')
-  math.innerHTML = `<mrow>
-      <mrow>
-         <msup> <mi>x</mi> <mn>2</mn> </msup> <mo>+</mo>
-         <mrow>
-            <mn>4</mn>
-            <mo>⁢</mo>
-            <mi>x</mi>
-         </mrow>
-         <mo>+</mo>
-         <mn>4</mn>
-      </mrow>
-      
-      <mo>=</mo>
-      <mn>0</mn>
-   </mrow>`*/
-  Mathjax.typeSet()
+});
       </script>
   </body>
 </html>
