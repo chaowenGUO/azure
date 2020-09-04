@@ -24,7 +24,7 @@ function typeset(code) {
 }
         typeset(() => {
   const math = document.querySelector('div');
-  math.innerHTML = '\(\dfrac{a}{1-a^2}\)';
+  math.innerHTML = String.raw`\(\dfrac{a}{1-a^2}\)`
   return math;
 });
       </script>
