@@ -4,13 +4,10 @@
       <meta charset='utf-8'>
       <title>latex</title>
       <script src='https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js'></script>
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=MML_CHTML'></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>
   </head>
   <body>
-
-  <math>
-  </math>
-
+  <div></div>
       <script type='module'>
           await languagePluginLoader
           /*await pyodide.loadPackage('sympy')
@@ -18,7 +15,7 @@
           response = response.ok ? await response.text() : ''
           const a = pyodide.runPython(response)
           console.log(a)*/
-document.querySelector('math').innerHTML = '<mrow><mrow><mo>&int;</mo></mrow><mfenced><msup><mrow><mfenced><msup><mrow><mfenced><mi>x</mi></mfenced></mrow><mn>-1</mn></msup></mfenced></mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></msup></mfenced><mo>&dd;</mo><mi>x</mi></mrow>'
+document.querySelector('div').innerHTML = '<math><mrow><mrow><mo>&int;</mo></mrow><mfenced><msup><mrow><mfenced><msup><mrow><mfenced><mi>x</mi></mfenced></mrow><mn>-1</mn></msup></mfenced></mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></msup></mfenced><mo>&dd;</mo><mi>x</mi></mrow></math>'
         
       </script>
   </body>
