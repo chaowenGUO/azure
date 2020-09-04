@@ -9,12 +9,11 @@
   <body>
       <math></math>
       <script type='module'>
-          //await languagePluginLoader
-          //await pyodide.loadPackage('sympy')
-          //let response = await globalThis.fetch('index.py')
-          //response = response.ok ? await response.text() : ''
-          //pyodide.runPython(response)
-          //globalThis.MathJax.typeset()
+          await languagePluginLoader
+          await pyodide.loadPackage('sympy')
+          let response = await globalThis.fetch('index.py')
+          response = response.ok ? await response.text() : ''
+          pyodide.runPython(response)
         //let promise = Promise.resolve();  // Used to hold chain of typesetting calls
 
 /*function typeset(code) {
@@ -27,7 +26,7 @@
   math.innerHTML = String.raw`\(\dfrac{a}{1-a^2}\)`
   return math;
 });*/
-        const math = document.querySelector('math')
+/*        const math = document.querySelector('math')
   math.innerHTML = `<mrow>
       <mrow>
          <msup> <mi>x</mi> <mn>2</mn> </msup> <mo>+</mo>
@@ -42,7 +41,7 @@
       
       <mo>=</mo>
       <mn>0</mn>
-   </mrow>`
+   </mrow>`*/
   //Mathjax.typeSet()
       </script>
   </body>
