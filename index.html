@@ -7,7 +7,20 @@
       <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=MML_CHTML'></script>
   </head>
   <body>
-      <script type='math/mml'></script>
+      <script type="math/mml">
+  <math>
+    <mi>x</mi>
+    <mo>+</mo>
+    <msqrt>
+      <mn>1</mn>
+      <mo>&#x2212;<!-- − --></mo>
+      <msup>
+        <mi>x</mi>
+        <mn>2</mn>
+      </msup>
+    </msqrt>
+  </math>
+</script>
       <script type='module'>
           await languagePluginLoader
           /*await pyodide.loadPackage('sympy')
@@ -15,7 +28,7 @@
           response = response.ok ? await response.text() : ''
           const a = pyodide.runPython(response)
           console.log(a)*/
-document.querySelector('script[type="math/mml"]').innerHTML = '<math><mrow><mrow><mo>&int;</mo></mrow><mfenced><msup><mrow><mfenced><msup><mrow><mfenced><mi>x</mi></mfenced></mrow><mn>-1</mn></msup></mfenced></mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></msup></mfenced><mo>&dd;</mo><mi>x</mi></mrow></math>'
+//document.querySelector('script[type="math/mml"]').innerHTML = '<math><mrow><mrow><mo>&int;</mo></mrow><mfenced><msup><mrow><mfenced><msup><mrow><mfenced><mi>x</mi></mfenced></mrow><mn>-1</mn></msup></mfenced></mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></msup></mfenced><mo>&dd;</mo><mi>x</mi></mrow></math>'
         
       </script>
   </body>
