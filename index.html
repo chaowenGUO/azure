@@ -7,7 +7,7 @@
       <script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'></script>
   </head>
   <body>
-      <div></div>
+      <math></math>
       <script type='module'>
           //await languagePluginLoader
           //await pyodide.loadPackage('sympy')
@@ -27,8 +27,22 @@
   math.innerHTML = String.raw`\(\dfrac{a}{1-a^2}\)`
   return math;
 });*/
-        const math = document.querySelector('div')
-  math.innerHTML = String.raw`\(\dfrac{a}{1-a^2}\)`
+        const math = document.querySelector('math')
+  math.innerHTML = `<mrow>
+      <mrow>
+         <msup> <mi>x</mi> <mn>2</mn> </msup> <mo>+</mo>
+         <mrow>
+            <mn>4</mn>
+            <mo>⁢</mo>
+            <mi>x</mi>
+         </mrow>
+         <mo>+</mo>
+         <mn>4</mn>
+      </mrow>
+      
+      <mo>=</mo>
+      <mn>0</mn>
+   </mrow>`
   //Mathjax.typeSet()
       </script>
   </body>
