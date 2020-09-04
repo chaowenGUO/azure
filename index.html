@@ -7,7 +7,7 @@
       <script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'></script>
   </head>
   <body>
-      <math></math>
+      <div></div>
       <script type='module'>
           //await languagePluginLoader
           //await pyodide.loadPackage('sympy')
@@ -23,7 +23,7 @@ function typeset(code) {
   return promise;
 }
         typeset(() => {
-  const math = document.querySelector('math');
+  const math = document.querySelector('div');
   math.innerHTML = '\(\\frac{a}{1-a^2}\)';
   return math;
 });
