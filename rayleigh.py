@@ -1,10 +1,11 @@
 response = []
 
+import sympy
+
 def rayleigh(hamiltonian, wavefunction, limits):
     return sympy.integrate(wavefunction * hamiltonian(wavefunction), (position, *limits)) / sympy.integrate(wavefunction**2,(position, *limits))
 
 #particle in a box
-import sympy
 length, mass, hbar = sympy.symbols('l,m,&hbar;', positive=True)
 position = sympy.symbols('x', real=True)
 wavefunction = position * (length - position)
