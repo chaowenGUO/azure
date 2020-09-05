@@ -38,7 +38,7 @@ coefficient, energy = (LowerInverse @ hamiltonian @ LowerInverse.T).diagonalize(
 coefficient = LowerInverse.T @ sympy.Matrix.hstack(*map(
     lambda column: coefficient[:, column] / coefficient[:, column].norm(),
     range(coefficient.shape[-1])))
-#js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math display="block">', sympy.mathml(energy, printer='presentation'), '</math>'))))
+response += sympy.mathml(energy, printer='presentation'),
 
 assert (coefficient.T @ overlap @ coefficient).applyfunc(sympy.cancel) == sympy.eye(len(basis))  
 #wavefunction are orthonormal
@@ -46,7 +46,7 @@ wavefunction = basis.T @ coefficient
 assert ((wavefunction.T @ wavefunction
         ).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)).cancel()) 
         == sympy.eye(len(wavefunction)))  #wavefunction are orthonormal
-#js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math display="block">', sympy.mathml(wavefunction.T, printer='presentation'), '</math>'))))
+response += sympy.mathml(wavefunction.T, printer='presentation'),
 
 numerical = [(hbar, 1), (length, 1), (mass, 1)]
 import scipy.linalg
