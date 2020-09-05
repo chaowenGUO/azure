@@ -3,8 +3,8 @@
     <head>
         <meta charset='utf-8'>
         <title>latex</title>
-        <script defer src='https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js'></script>
         <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>
+        <script defer src='https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js'></script>        
         <script type='module'>
             await languagePluginLoader
             await pyodide.loadPackage('sympy')
@@ -12,8 +12,8 @@
             response = response.ok ? await response.text() : ''
             pyodide.runPython(response)
             //globalThis.document.body.prepend(globalThis.MathJax.mathml2chtml(['<math>', pyodide.runPython(response), '</math>'].join('')))
-            //globalThis.MathJax.startup.document.clear()
-            //globalThis.MathJax.startup.document.updateDocument()
+            globalThis.MathJax.startup.document.clear()
+            globalThis.MathJax.startup.document.updateDocument()
         </script>
     </head>
     <body>      
