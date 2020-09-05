@@ -10,7 +10,7 @@
             const div = globalThis.document.createElement('div')
             div.textContent = response[0]
             globalThis.document.body.append(div)
-            for (let _ = 1; !globalThis.Object.is(_, 5); ++_) globalThis.document.body.append(globalThis.MathJax.mathml2chtml(['<math display="block">', response[_], '</math>'].join('')))
+            for (let _ = 1; !globalThis.Object.is(_, 7); ++_) globalThis.document.body.append(globalThis.MathJax.mathml2chtml(['<math display="block">', response[_], '</math>'].join('')))
             globalThis.MathJax.startup.document.clear()
             globalThis.MathJax.startup.document.updateDocument()
         </script>
