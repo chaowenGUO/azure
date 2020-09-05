@@ -8,5 +8,5 @@ jobs:
           with:
               python-version: '3.x'
         - run: |
-              pip install sympy numpy gitpython
+              pip install sympy scipy gitpython
               python rayleigh.py
