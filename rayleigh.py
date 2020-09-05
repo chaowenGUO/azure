@@ -50,7 +50,7 @@ response += wavefunction.T,
 
 numerical = [(hbar, 1), (length, 1), (mass, 1)]
 import scipy.linalg
-numericalEnergy, numericalCoefficient = scipy.linalg.eigh(sympy.matrix2numpy(hamiltonian.subs(numerical), float), sympy.matrix2numpy(overlap.subs(numerical), float))
+numericalEnergy, numericalCoefficient = scipy.linalg.eigh(*(sympy.matrix2numpy(_.subs(numerical), float) for _ in (hamiltonian, overlap)))
 
 response += sympy.Matrix(numericalEnergy).T,
 
