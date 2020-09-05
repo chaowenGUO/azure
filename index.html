@@ -7,8 +7,10 @@
         <script type='module'>
             let response = await globalThis.fetch('response.json')
             response = response.ok ? await response.json() : ''
-            //globalThis.document.querySelector('p').prepend(globalThis.MathJax.mathml2chtml(['<math>', response[0], '</math>'].join('')), '; ', globalThis.MathJax.mathml2chtml(['<math>', response[1], '</math>'].join('')), ' is given before calculation; ', globalThis.MathJax.mathml2chtml(['<math>', response[1], '</math>'].join('')), ' not need to normalize but square-integrable and continuous')
-            for (let _ = 2; !globalThis.Object.is(_, response.length); ++_) globalThis.document.body.append(['<math display="block">', response[_], '</math>'].join(''))
+            globalThis.document.querySelector('p').prepend(globalThis.MathJax.mathml2chtml(['<math>', response[0], '</math>'].join('')), '; ', globalThis.MathJax.mathml2chtml(['<math>', response[1], '</math>'].join('')), ' is given before calculation; ', globalThis.MathJax.mathml2chtml(['<math>', response[1], '</math>'].join('')), ' not need to normalize but square-integrable and continuous')
+            for (let _ = 2; !globalThis.Object.is(_, response.length); ++_) globalThis.document.body.append(globalThis.MathJax.mathml2chtml(['<math display="block">', response[_], '</math>'].join('')))
+            globalThis.MathJax.startup.document.clear()
+            globalThis.MathJax.startup.document.updateDocument()
         </script>
     </head>
     <body>
