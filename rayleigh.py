@@ -63,7 +63,7 @@ response += coefficient.subs(numerical).evalf(),
 response = [sympy.mathml(_, printer='presentation') for _ in response]
 
 import json
-with open('response.json', 'w') as _: _.write(json.dumps(response, default=str))
+with open('response.json', 'w') as _: _.write(json.dumps(response))
 
 import git, pathlib
 with git.Repo(pathlib.Path(__file__).resolve().parent) as repository:
