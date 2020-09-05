@@ -50,16 +50,15 @@ response += sympy.mathml(wavefunction.T, printer='presentation'),
 
 numerical = [(hbar, 1), (length, 1), (mass, 1)]
 import numpy.linalg
-numericalEnergy, numericalCoefficient = numpy.linalg.eigh(
-    sympy.matrix2numpy(hamiltonian.subs(numerical), float),
-    sympy.matrix2numpy(overlap.subs(numerical), float))
-#js.document.body.append(numericalEnergy)
+numericalEnergy, numericalCoefficient = numpy.linalg.eigh(sympy.matrix2numpy(hamiltonian.subs(numerical), float), sympy.matrix2numpy(overlap.subs(numerical), float))
 
-#js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math display="block">', sympy.mathml(energy.subs(numerical).evalf(), printer='presentation'), '</math>'))))
+response += sympy.mathml(sympy.Matrix(numericalEnergy).T, printer='presentation'),
 
-#js.document.body.append(numericalCoefficient)
+response += sympy.mathml(energy.subs(numerical).evalf(), printer='presentation'),
 
-#js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math display="block">', sympy.mathml(coefficient.subs(numerical).evalf(), printer='presentation'), '</math>'))))
+response += sympy.mathml(sympy.Matrix(numericalCoefficient), printer='presentation'),
+
+response += sympy.mathml(coefficient.subs(numerical).evalf(), printer='presentation'),
 
 import json
 with open('response.json', 'w') as _: _.write(json.dumps(response, default=str))
