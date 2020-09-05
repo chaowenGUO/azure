@@ -24,3 +24,6 @@ basis = sympy.Matrix([
     position**2 * (length - position)**2 * (length / 2 - position)
 ])
 js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math>', sympy.mathml(basis, printer='presentation'), '</math>'))))
+
+hamiltonian = (basis @ basis.applyfunc(lambda element: -hbar**2 / 2 / mass * element.diff(position, 2)).T).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)))
+js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math>', sympy.mathml(hamiltonian, printer='presentation'), '</math>'))))
