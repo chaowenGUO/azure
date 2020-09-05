@@ -1,4 +1,4 @@
-out = []
+response = []
 
 def rayleigh(hamiltonian, wavefunction, limits):
     return sympy.integrate(wavefunction * hamiltonian(wavefunction), (position, *limits)) / sympy.integrate(wavefunction**2,(position, *limits))
@@ -10,14 +10,14 @@ position = sympy.symbols('x', real=True)
 wavefunction = position * (length - position)
 hamiltonian = lambda wavefunction: -hbar**2 / 2 / mass * wavefunction.diff(position, 2)
 exact = hbar**2 * sympy.pi**2 / 2 / mass / length**2  #曾谨言volume1 page65 3.2.7
-out += sympy.N(rayleigh(hamiltonian, wavefunction, [0, length]) / exact - 1),
+response += sympy.N(rayleigh(hamiltonian, wavefunction, [0, length]) / exact - 1),
 
 #harmonic oscillator
 wavefunction = sympy.exp(-length * position**2)
 angularFrequency = sympy.symbols('varpi', positive=True)
 hamiltonian = lambda wavefunction: -hbar**2 / 2 / mass * wavefunction.diff(position, 2) + mass * angularFrequency**2 / 2 * position**2 * wavefunction
 ground = rayleigh(hamiltonian, wavefunction, [-sympy.oo, sympy.oo])
-out += sympy.mathml(ground.subs(length, sympy.solveset(ground.diff(length), length).sup), printer='presentation'),
+response += sympy.mathml(ground.subs(length, sympy.solveset(ground.diff(length), length).sup), printer='presentation'),
 
 basis = sympy.Matrix([
     position * (length - position),
@@ -62,7 +62,7 @@ numericalEnergy, numericalCoefficient = scipy.linalg.eigh(
 #js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math display="block">', sympy.mathml(coefficient.subs(numerical).evalf(), printer='presentation'), '</math>'))))
 
 import json
-with open('out.json', 'w') as _: _.write(json.dumps(out, default=str))
+with open('response.json', 'w') as _: _.write(json.dumps(response, default=str))
 
 import git, pathlib
 with git.Repo(pathlib.Path(__file__).resolve().parent) as repository:
