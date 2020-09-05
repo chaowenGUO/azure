@@ -40,8 +40,7 @@ coefficient = LowerInverse.T @ sympy.Matrix.hstack(*map(
     range(coefficient.shape[-1])))
 response += energy,
 
-assert (coefficient.T @ overlap @ coefficient).applyfunc(sympy.cancel) == sympy.eye(len(basis))  
-#wavefunction are orthonormal
+assert (coefficient.T @ overlap @ coefficient).applyfunc(sympy.cancel) == sympy.eye(len(basis))#wavefunction are orthonormal
 wavefunction = basis.T @ coefficient
 assert ((wavefunction.T @ wavefunction
         ).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)).cancel()) 
