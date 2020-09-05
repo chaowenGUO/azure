@@ -8,6 +8,6 @@ jobs:
           with:
               python-version: '3.x'
         - run: |
-              pip install sympy scipy gitpython
+              pip install sympy numpy gitpython
               python rayleigh.py
               ls -al
