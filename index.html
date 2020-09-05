@@ -7,7 +7,7 @@
         <script defer src='https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js'></script>        
         <script type='module'>
             await languagePluginLoader
-            await pyodide.loadPackage('sympy')
+            await pyodide.loadPackage(['sympy', 'scipy'])
             let response = await globalThis.fetch('index.py')
             response = response.ok ? await response.text() : ''
             pyodide.runPython(response)
