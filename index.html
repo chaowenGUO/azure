@@ -6,7 +6,7 @@
         <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>       
         <script type='module'>
             let response = await globalThis.fetch('response.json')
-            response = response.ok ? await response.text() : ''
+            response = response.ok ? await response.json() : ''
             globalThis.document.body.append(response[0])
             globalThis.document.body.append(globalThis.MathJax.mathml2chtml(['<math display="block">', response[1], '</math>'].join('')))
             globalThis.MathJax.startup.document.clear()
