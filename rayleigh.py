@@ -5,7 +5,7 @@ def rayleigh(hamiltonian, wavefunction, limits):
 
 #particle in a box
 import sympy
-length, mass, hbar = sympy.symbols('l,m,hbar', positive=True)
+length, mass, hbar = sympy.symbols('l,m,&hbar;', positive=True)
 position = sympy.symbols('x', real=True)
 wavefunction = position * (length - position)
 hamiltonian = lambda wavefunction: -hbar**2 / 2 / mass * wavefunction.diff(position, 2)
