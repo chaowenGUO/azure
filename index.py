@@ -27,3 +27,34 @@ js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math>', sympy.mathml(
 
 hamiltonian = (basis @ basis.applyfunc(lambda element: -hbar**2 / 2 / mass * element.diff(position, 2)).T).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)))
 js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math>', sympy.mathml(hamiltonian, printer='presentation'), '</math>'))))
+
+overlap = (basis @ basis.T).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)))
+js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math>', sympy.mathml(overlap, printer='presentation'), '</math>'))))
+
+LowerInverse = overlap.cholesky().inv()
+coefficient, energy = (LowerInverse @ hamiltonian @ LowerInverse.T).diagonalize()
+coefficient = LowerInverse.T @ sympy.Matrix.hstack(*map(
+    lambda column: coefficient[:, column] / coefficient[:, column].norm(),
+    range(coefficient.shape[-1])))
+js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math>', sympy.mathml(energy, printer='presentation'), '</math>'))))
+
+assert (coefficient.T @ overlap @ coefficient).applyfunc(sympy.cancel) == sympy.eye(len(basis))  
+#wavefunction are orthonormal
+wavefunction = basis.T @ coefficient
+assert ((wavefunction.T @ wavefunction
+        ).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)).cancel()) 
+        == sympy.eye(len(wavefunction)))  #wavefunction are orthonormal
+js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math>', sympy.mathml(wavefunction.T, printer='presentation'), '</math>'))))
+
+numerical = [(hbar, 1), (length, 1), (mass, 1)]
+import scipy.linalg
+numericalEnergy, numericalCoefficient = scipy.linalg.eigh(
+    sympy.matrix2numpy(hamiltonian.subs(numerical), float),
+    sympy.matrix2numpy(overlap.subs(numerical), float))
+js.document.body.append(numericalEnergy)
+
+js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math>', sympy.mathml(energy.subs(numerical).evalf(), printer='presentation'), '</math>'))))
+
+js.document.body.append(numericalCoefficient)
+
+js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math>', sympy.mathml(coefficient.subs(numerical).evalf(), printer='presentation'), '</math>'))))
