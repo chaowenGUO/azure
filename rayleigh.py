@@ -2,7 +2,7 @@ response = []
 
 import sympy
 position = sympy.symbols('x', real=True)
-wavefunction = sympy.Function('&psi;' real=True)(position)
+wavefunction = sympy.Function('&psi;', real=True)(position)
 response += sympy.Integral(wavefunction**2, position),
 
 def rayleigh(hamiltonian, wavefunction, limits):
