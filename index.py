@@ -15,4 +15,4 @@ wavefunction = sympy.exp(-length * position**2)
 angularFrequency = sympy.symbols('varpi', positive=True)
 hamiltonian = lambda wavefunction: -hbar**2 / 2 / mass * wavefunction.diff(position, 2) + mass * angularFrequency**2 / 2 * position**2 * wavefunction
 ground = rayleigh(hamiltonian, wavefunction, [-sympy.oo, sympy.oo])
-js.document.body.prepend(js.MathJax.mathml2chtml(''.join(('<math>', sympy.mathml(ground.subs(length, sympy.solveset(ground.diff(length), length).sup), printer='presentation'), '</math>'))))
+js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math>', sympy.mathml(ground.subs(length, sympy.solveset(ground.diff(length), length).sup), printer='presentation'), '</math>'))))
