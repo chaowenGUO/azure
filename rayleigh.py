@@ -49,8 +49,8 @@ assert ((wavefunction.T @ wavefunction
 response += sympy.mathml(wavefunction.T, printer='presentation'),
 
 numerical = [(hbar, 1), (length, 1), (mass, 1)]
-import numpy.linalg
-numericalEnergy, numericalCoefficient = numpy.linalg.eigh(sympy.matrix2numpy(hamiltonian.subs(numerical), float), sympy.matrix2numpy(overlap.subs(numerical), float))
+import scipy.linalg
+numericalEnergy, numericalCoefficient = scipy.linalg.eigh(sympy.matrix2numpy(hamiltonian.subs(numerical), float), sympy.matrix2numpy(overlap.subs(numerical), float))
 
 response += sympy.mathml(sympy.Matrix(numericalEnergy).T, printer='presentation'),
 
