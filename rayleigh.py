@@ -62,7 +62,7 @@ numericalEnergy, numericalCoefficient = scipy.linalg.eigh(
 #js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math display="block">', sympy.mathml(coefficient.subs(numerical).evalf(), printer='presentation'), '</math>'))))
 
 import json
-with open('out.json', 'w') as _: _.write(json.dumps(out))
+with open('out.json', 'w') as _: _.write(json.dumps(out, default=str))
 
 import git, pathlib
 with git.Repo(pathlib.Path(file).resolve().parent) as repository:
