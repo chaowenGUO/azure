@@ -25,13 +25,13 @@ basis = sympy.Matrix([
     position * (length - position) * (length / 2 - position),
     position**2 * (length - position)**2 * (length / 2 - position)
 ])
-#js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math display="block">', sympy.mathml(basis, printer='presentation'), '</math>'))))
+response += sympy.mathml(basis, printer='presentation'),
 
 hamiltonian = (basis @ basis.applyfunc(lambda element: -hbar**2 / 2 / mass * element.diff(position, 2)).T).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)))
-#js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math display="block">', sympy.mathml(hamiltonian, printer='presentation'), '</math>'))))
+response += sympy.mathml(hamiltonian, printer='presentation'),
 
 overlap = (basis @ basis.T).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)))
-#js.document.body.append(js.MathJax.mathml2chtml(''.join(('<math display="block">', sympy.mathml(overlap, printer='presentation'), '</math>'))))
+response += sympy.mathml(overlap, printer='presentation'),
 
 LowerInverse = overlap.cholesky().inv()
 coefficient, energy = (LowerInverse @ hamiltonian @ LowerInverse.T).diagonalize()
