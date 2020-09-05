@@ -14,7 +14,7 @@ response += sympy.N(rayleigh(hamiltonian, wavefunction, [0, length]) / exact - 1
 
 #harmonic oscillator
 wavefunction = sympy.exp(-length * position**2)
-angularFrequency = sympy.symbols('varpi', positive=True)
+angularFrequency = sympy.symbols('&varpi;', positive=True)
 hamiltonian = lambda wavefunction: -hbar**2 / 2 / mass * wavefunction.diff(position, 2) + mass * angularFrequency**2 / 2 * position**2 * wavefunction
 ground = rayleigh(hamiltonian, wavefunction, [-sympy.oo, sympy.oo])
 response += ground.subs(length, sympy.solveset(ground.diff(length), length).sup),
