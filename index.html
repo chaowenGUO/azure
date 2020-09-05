@@ -7,7 +7,7 @@
         <script type='module'>
             let response = await globalThis.fetch('response.json')
             response = response.ok ? await response.json() : ''
-            for (let _ = 0; !globalThis.Object.is(_, 7); ++_) globalThis.document.body.append(globalThis.MathJax.mathml2chtml(['<math display="block">', response[_], '</math>'].join('')))
+            for (let _ = 1; !globalThis.Object.is(_, 7); ++_) globalThis.document.body.append(globalThis.MathJax.mathml2chtml(['<math display="block">', response[_], '</math>'].join('')))
             globalThis.MathJax.startup.document.clear()
             globalThis.MathJax.startup.document.updateDocument()
         </script>
