@@ -8,6 +8,7 @@
             let response = await globalThis.fetch('response.json')
             response = response.ok ? await response.json() : ''
             globalThis.document.body.prepend(globalThis.MathJax.mathml2chtml(['<math>', response[0], '</math>'].join('')))
+            globalThis.document.body.prepend(globalThis.MathJax.mathml2chtml(['<math>', response[1], '</math>'].join('')))
             globalThis.MathJax.startup.document.clear()
             globalThis.MathJax.startup.document.updateDocument()
         </script>
