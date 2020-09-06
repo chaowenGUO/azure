@@ -7,5 +7,7 @@ potential=base.mv('&phi;','vector',f=True)
 
 response += sympy.mathml(potential.obj, printer='presentation'),
 
+response += sympy.mathml((base.grad*potential).obj, printer='presentation'),
+
 import json, pathlib
 with open(pathlib.Path(__file__).resolve().parent / 'response.json', 'w') as _: _.write(json.dumps(response))
