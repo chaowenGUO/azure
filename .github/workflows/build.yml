@@ -8,6 +8,6 @@ jobs:
           with:
               python-version: '3.x'
         - run: |
-              pip install sympy scipy gitpython
+              pip install galgebra scipy gitpython
               python rayleigh/main.py
               python build.py
