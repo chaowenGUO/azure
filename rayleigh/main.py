@@ -66,5 +66,5 @@ response += coefficient.subs(numerical).evalf(),
 
 response = [sympy.mathml(_, printer='presentation') for _ in response]
 
-import json
+import json, pathlib
 with open(pathlib.Path(__file__).resolve().parent / 'response.json', 'w') as _: _.write(json.dumps(response))
