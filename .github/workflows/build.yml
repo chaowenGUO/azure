@@ -9,4 +9,4 @@ jobs:
               python-version: '3.x'
         - run: |
               pip install sympy scipy gitpython
-              python rayleigh/main.py
+              python rayleigh/main.py build.py
