@@ -1,4 +1,4 @@
-import maxwell.main
+import maxwell.main, rayleigh.main
 
 import git, pathlib
 with git.Repo(pathlib.Path(__file__).resolve().parent) as repository:
