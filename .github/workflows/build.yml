@@ -9,6 +9,4 @@ jobs:
               python-version: '3.x'
         - run: |
               pip install galgebra scipy gitpython
-              python rayleigh/main.py
-              python maxwell/main.py
               python build.py
