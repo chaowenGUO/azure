@@ -7,7 +7,7 @@ potential=base.mv('&phi;','vector',f=True).subs(sympy.symbols('t',real=True), sy
 
 response += sympy.mathml(potential.obj, printer='presentation'),
 
-response += sympy.mathml((base.grad*base.grad*potential).obj, printer='presentation'),
+response += sympy.mathml((base.grad*base.grad*potential).obj.replace(sympy.Subs, lambda a,b,c: a.xreplace({b[0]:c})), printer='presentation'),
 
 import json, pathlib
 with open(pathlib.Path(__file__).resolve().parent / 'response.json', 'w') as _: _.write(json.dumps(response))
