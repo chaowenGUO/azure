@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>atwood machine</title>
+        <script defer src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js'></script>       
+        <script type='module'>
+            let response = await globalThis.fetch('response.json')
+            response = response.ok ? await response.json() : ''
+            globalThis.document.querySelector('p').prepend('solution ', globalThis.MathJax.mathml2chtml(['<math>', response[0], '</math>'].join('')))
+            globalThis.document.querySelectorAll('p')[1].prepend('direction of constraint force ', globalThis.MathJax.mathml2chtml(['<math>', response[1], '</math>'].join('')), ' is the increment direction of x')
+            globalThis.MathJax.startup.document.clear()
+            globalThis.MathJax.startup.document.updateDocument()
+        </script>
+    </head>
+    <body>
+        <a href='https://en.wikipedia.org/wiki/Atwood_machine' target='_blank'>wiki</a>
+        <p></p>
+        <p></p>
+    </body>
+</html>
