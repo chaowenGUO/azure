@@ -1,5 +1,8 @@
 import maxwell.main, rayleigh.main, atwoodMachine.main
 
+import importlib
+importlib.import_module('.main', '_1_1')
+
 import git, pathlib
 with git.Repo(pathlib.Path(__file__).resolve().parent) as repository:
     repository.config_writer().set_value('user', 'name', 'Your Name').release()
