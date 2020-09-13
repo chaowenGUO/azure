@@ -8,3 +8,4 @@ response += sympy.mathml(sum(key * sympy.factor(value) for key, value in sympy.c
 
 import json, pathlib
 with open(pathlib.Path(__file__).resolve().parent / 'response.json', 'w') as _: _.write(json.dumps(response))
+1 + 1
