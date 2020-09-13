@@ -1,1 +1,19 @@
-
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>rayleigh</title>
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>       
+        <script type='module'>
+            let response = await globalThis.fetch('response.json')
+            response = response.ok ? await response.json() : ''
+            globalThis.document.querySelector('p').prepend(globalThis.MathJax.mathml2chtml(['<math>', response[0], '</math>'].join('')), '; ', globalThis.MathJax.mathml2chtml(['<math>', response[1], '</math>'].join('')), ' is given before calculation; ', globalThis.MathJax.mathml2chtml(['<math>', response[1], '</math>'].join('')), ' not need to normalize but square-integrable and continuous')
+            for (let _ = 2; !globalThis.Object.is(_, response.length); ++_) globalThis.document.body.append(globalThis.MathJax.mathml2chtml(['<math display="block">', response[_], '</math>'].join('')))
+            globalThis.MathJax.startup.document.clear()
+            globalThis.MathJax.startup.document.updateDocument()
+        </script>
+    </head>
+    <body>
+        <p></p>
+    </body>
+</html>
