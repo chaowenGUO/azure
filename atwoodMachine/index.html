@@ -7,12 +7,12 @@
         <script type='module'>
             let response = await globalThis.fetch('response.json')
             response = response.ok ? await response.json() : ''
-            for (const _ of response) globalThis.document.body.append(globalThis.MathJax.mathml2chtml(['<math display="block">', _, '</math>'].join('')))
+            globalThis.document.body.append('solution', globalThis.MathJax.mathml2chtml(['<math display="block">', response[0], '</math>'].join('')))
+            globalThis.document.body.append('direction of constraint force', globalThis.MathJax.mathml2chtml(['<math display="block">', response[1], '</math>'].join('')), 'is the opposite of increment of x')
             globalThis.MathJax.startup.document.clear()
             globalThis.MathJax.startup.document.updateDocument()
         </script>
     </head>
-    <body>
-        direction of constraint force −dV(x)/dx is the opposite of increment of x 
+    <body> 
     </body>
 </html>
