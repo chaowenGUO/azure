@@ -3,12 +3,12 @@ response = []
 import sympy
 position = sympy.symbols('x', real=True)
 wavefunction = sympy.Function('psi', real=True)(position)
-response += sympy.Integral(wavefunction*sympy.Function('&Hcirc;', real=True)(wavefunction), position) / sympy.Integral(wavefunction**2, position),
+response += sympy.Integral(wavefunction * sympy.Function('&Hcirc;', real=True)(wavefunction), position) / sympy.Integral(wavefunction**2, position),
 
 response += wavefunction,
 
 def rayleigh(hamiltonian, wavefunction, limits):
-    return sympy.integrate(wavefunction * hamiltonian(wavefunction), (position, *limits)) / sympy.integrate(wavefunction**2,(position, *limits))
+    return sympy.integrate(wavefunction * hamiltonian(wavefunction), (position, *limits)) / sympy.integrate(wavefunction**2, (position, *limits))
 
 #particle in a box
 length, mass, hbar = sympy.symbols('l,m,&hbar;', positive=True)
