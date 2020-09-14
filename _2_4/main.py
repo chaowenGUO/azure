@@ -1,7 +1,7 @@
 response = []
 
 import sympy
-Radius,Alpha,Gravity=sympy.symbols('a,alpha,g',positive=True)
+radius,alpha,gravity=sympy.symbols('a,alpha,g',positive=True)
 theta=sympy.symbols('theta',real=True)
 potentialM=sympy.symbols('M',positive=True)*Gravity*Radius*sympy.sin(sympy.pi-Alpha-theta)
 potentialm=sympy.symbols('m',positive=True)*Gravity*Radius*sympy.sin(theta-Alpha)
