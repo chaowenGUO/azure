@@ -24,12 +24,12 @@ hamiltonian = lambda wavefunction: -hbar**2 / 2 / mass * wavefunction.diff(posit
 ground = rayleigh(hamiltonian, wavefunction, (-sympy.oo, sympy.oo))
 response += ground.subs(length, sympy.solveset(ground.diff(length), length).sup),
 
-basis = sympy.Matrix([
+basis = sympy.Matrix((
     position * (length - position),
     position**2 * (length - position)**2,
     position * (length - position) * (length / 2 - position),
     position**2 * (length - position)**2 * (length / 2 - position)
-])
+))
 response += basis,
 
 hamiltonian = (basis @ basis.applyfunc(lambda element: -hbar**2 / 2 / mass * element.diff(position, 2)).T).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)))
