@@ -15,13 +15,13 @@ length, mass, hbar = sympy.symbols('l,m,&hbar;', positive=True)
 wavefunction = position * (length - position)
 hamiltonian = lambda wavefunction: -hbar**2 / 2 / mass * wavefunction.diff(position, 2)
 exact = hbar**2 * sympy.pi**2 / 2 / mass / length**2  #曾谨言volume1 page65 3.2.7
-response += sympy.N(rayleigh(hamiltonian, wavefunction, [0, length]) / exact - 1),
+response += sympy.N(rayleigh(hamiltonian, wavefunction, (0, length)) / exact - 1),
 
 #harmonic oscillator
 wavefunction = sympy.exp(-length * position**2)
 angularFrequency = sympy.symbols('&varpi;', positive=True)
 hamiltonian = lambda wavefunction: -hbar**2 / 2 / mass * wavefunction.diff(position, 2) + mass * angularFrequency**2 / 2 * position**2 * wavefunction
-ground = rayleigh(hamiltonian, wavefunction, [-sympy.oo, sympy.oo])
+ground = rayleigh(hamiltonian, wavefunction, (-sympy.oo, sympy.oo))
 response += ground.subs(length, sympy.solveset(ground.diff(length), length).sup),
 
 basis = sympy.Matrix([
@@ -52,7 +52,7 @@ assert ((wavefunction.T @ wavefunction
         == sympy.eye(len(wavefunction)))  #wavefunction are orthonormal
 response += wavefunction.T,
 
-numerical = [(hbar, 1), (length, 1), (mass, 1)]
+numerical = ((hbar, 1), (length, 1), (mass, 1))
 import scipy.linalg
 numericalEnergy, numericalCoefficient = scipy.linalg.eigh(*(sympy.matrix2numpy(_.subs(numerical), float) for _ in (hamiltonian, overlap)))
 
