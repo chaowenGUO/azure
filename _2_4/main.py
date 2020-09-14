@@ -10,4 +10,4 @@ curve=sympy.Curve([Radius*sympy.cos(phi),Radius*sympy.sin(phi)],(phi,theta-Alpha
 y=sympy.symbols('y',real=True)
 potentialLamda=sympy.line_integrate(sympy.symbols('lamda',positive=True)*Gravity*y,curve,['x',y])
 motion=sympy.diff(potentialM+potentialm+potentialLamda,theta).trigsimp()
-motion
+response += sympy.mathml(motion, printer='presentation'),
