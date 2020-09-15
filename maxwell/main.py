@@ -2,8 +2,8 @@ response = []
 
 import galgebra.ga, sympy
 
-base = galgebra.ga.Ga('e',g=[sympy.symbols('c', real=True)**2,-1,-1,-1],coords=sympy.symbols('t,x,y,z',real=True))
-potential = base.mv('&phi;','vector',f=True)
+base = galgebra.ga.Ga('e',g=[sympy.symbols('c', real=True)**2,-1,-1,-1],coords=sympy.symbols('t,x:z',real=True))
+potential = base.mv('&phi;',1,f=True)
 
 response += sympy.mathml(potential.obj, printer='presentation'),
 
