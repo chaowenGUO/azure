@@ -2,9 +2,8 @@ response = []
 
 import galgebra.ga, sympy
 radius, polar, azimuthal = sympy.symbols('r,theta,phi', real=True)
-cartesian = (radius * sympy.sin(polar) * sympy.cos(azimuthal), radius * sympy.sin(polar) * sympy.sin(azimuthal), radius * sympy.cos(polar))
-jacobian = sympy.Matrix(cartesian).jacobian((polar, azimuthal))
-base = galgebra.ga.Ga('\u0411',g=sympy.trigsimp(jacobian.T @ jacobian).diagonal(), coords=(polar, azimuthal))
+cartesian = galgebra.ga.Ga('\u0411', g=(1,) * 3, coords=sympy.symbols('x:z', real=True))
+base = cartesian.sm((radius * sympy.sin(polar) * sympy.cos(azimuthal), radius * sympy.sin(polar) * sympy.sin(azimuthal), radius * sympy.cos(polar)), (polar, azimuthal))
 response += sympy.mathml(sympy.integrate((cartesian[0]**2 + cartesian[1]**2) * base.E().norm(), (polar, 0, sympy.pi / 2), (azimuthal, 0, sympy.pi / 2)), printer='presentation'),
 
 import json, pathlib
