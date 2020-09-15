@@ -1,1 +1,19 @@
-
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>atwood machine</title>
+        <script defer src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js'></script>       
+        <script type='module'>
+            let response = await globalThis.fetch('response.json')
+            response = response.ok ? await response.json() : ''
+            globalThis.document.body.prepend(globalThis.MathJax.mathml2chtml(['<math>', response[0], '</math>'].join('')))
+            globalThis.MathJax.startup.document.clear()
+            globalThis.MathJax.startup.document.updateDocument()
+        </script>
+    </head>
+    <body>
+        <a href='https://en.wikipedia.org/wiki/Surface_integral' target='_blank'>wiki</a>
+        <p>高等数学导论7.4.2 例1</p>
+    </body>
+</html>
