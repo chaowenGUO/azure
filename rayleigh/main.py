@@ -47,9 +47,7 @@ response += energy,
 
 assert sympy.Matrix.applyfunc(coefficient.T @ overlap @ coefficient, sympy.cancel) == sympy.eye(len(basis))#wavefunction are orthonormal
 wavefunction = basis.T @ coefficient
-assert ((wavefunction.T @ wavefunction
-        ).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)).cancel()) 
-        == sympy.eye(len(wavefunction)))  #wavefunction are orthonormal
+assert sympy.Matrix.applyfunc(wavefunction.T @ wavefunction, lambda _: sympy.integrate(_, (position, 0, length)).cancel()) == sympy.eye(len(wavefunction)) #wavefunction are orthonormal
 response += wavefunction.T,
 
 numerical = ((hbar, 1), (length, 1), (mass, 1))
