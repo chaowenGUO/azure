@@ -32,7 +32,7 @@ basis = sympy.Matrix((
 ))
 response += basis,
 
-hamiltonian = sympy.Matrix.applyfunc(basis @ basis.applyfunc(lambda element: -hbar**2 / 2 / mass * element.diff(position, 2)).T, lambda _: sympy.integrate(_, (position, 0, length)))
+hamiltonian = sympy.Matrix.applyfunc(basis @ basis.applyfunc(lambda _: -hbar**2 / 2 / mass * _.diff(position, 2)).T, lambda _: sympy.integrate(_, (position, 0, length)))
 response += hamiltonian,
 
 overlap = sympy.Matrix.applyfunc(basis @ basis.T, lambda _: sympy.integrate(_, (position, 0, length)))
