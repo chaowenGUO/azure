@@ -53,8 +53,8 @@ assert ((wavefunction.T @ wavefunction
 response += wavefunction.T,
 
 numerical = ((hbar, 1), (length, 1), (mass, 1))
-import scipy.linalg
-numericalEnergy, numericalCoefficient = scipy.linalg.eigh(*(sympy.matrix2numpy(_.subs(numerical), float) for _ in (hamiltonian, overlap)))
+import scipy.linalg, numpy
+numericalEnergy, numericalCoefficient = scipy.linalg.eigh(*(numpy.array(_.subs(numerical), float) for _ in (hamiltonian, overlap)))
 
 response += sympy.Matrix(numericalEnergy).T,
 
