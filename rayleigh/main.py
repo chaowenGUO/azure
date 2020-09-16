@@ -35,7 +35,7 @@ response += basis,
 hamiltonian = (basis @ basis.applyfunc(lambda element: -hbar**2 / 2 / mass * element.diff(position, 2)).T).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)))
 response += hamiltonian,
 
-overlap = (basis @ basis.T).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)))
+overlap = sympy.Matrix.applyfunc(basis @ basis.T, lambda _: sympy.integrate(_, (position, 0, length)))
 response += overlap,
 
 LowerInverse = overlap.cholesky().inv()
