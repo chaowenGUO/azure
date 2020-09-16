@@ -39,13 +39,13 @@ overlap = sympy.Matrix.applyfunc(basis @ basis.T, lambda _: sympy.integrate(_, (
 response += overlap,
 
 LowerInverse = overlap.cholesky().inv()
-coefficient, energy = (LowerInverse @ hamiltonian @ LowerInverse.T).diagonalize()
+coefficient, energy = sympy.Matrix.diagonalize(LowerInverse @ hamiltonian @ LowerInverse.T)
 coefficient = LowerInverse.T @ sympy.Matrix.hstack(*map(
     lambda column: coefficient[:, column] / coefficient[:, column].norm(),
     range(coefficient.shape[-1])))
 response += energy,
 
-assert (coefficient.T @ overlap @ coefficient).applyfunc(sympy.cancel) == sympy.eye(len(basis))#wavefunction are orthonormal
+assert sympy.Matrix.applyfunc(coefficient.T @ overlap @ coefficient, sympy.cancel) == sympy.eye(len(basis))#wavefunction are orthonormal
 wavefunction = basis.T @ coefficient
 assert ((wavefunction.T @ wavefunction
         ).applyfunc(lambda element: sympy.integrate(element, (position, 0, length)).cancel()) 
