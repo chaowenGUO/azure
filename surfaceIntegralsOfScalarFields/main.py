@@ -1,7 +1,7 @@
 response = []
 
 import galgebra.ga, sympy, numpy, operator
-radius, polar, azimuthal = sympy.symbols('r,theta,phi', real=True)
+radius, polar, azimuthal = sympy.symbols('r,theta,phi', positive=True)
 base = galgebra.ga.Ga('\u0411', coords=(polar, azimuthal), X=(radius * sympy.sin(polar) * sympy.cos(azimuthal), radius * sympy.sin(polar) * sympy.sin(azimuthal), radius * sympy.cos(polar)))
 #jacobian = sympy.Matrix(base.u).jacobian(base.coords)
 #assert base.mv() == tuple(operator.matmul(*(numpy.array(_) for _ in (cartesian.mv(), jacobian))))
