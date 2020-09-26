@@ -7,4 +7,4 @@ motion = sympy.diff(sympy.symbols('m',positive=True) * sympy.symbols('g',positiv
 response += sympy.mathml(next(_ for _ in sympy.solve(motion, theta) if not _.has(sympy.pi)), printer='presentation'),
 
 import json, pathlib
-with open(pathlib.Path(__file__).resolve().parent / 'response.json', 'w') as _: _.write(json.dumps(response))
+pathlib.Path(__file__).resolve().parent.joinpath('response.json').write_text(json.dumps(response))
