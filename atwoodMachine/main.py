@@ -13,5 +13,6 @@ force = sympy.cancel(sympy.solveset(sympy.euler_equations(mass1 * x.diff(time)**
 response += force,
 
 response = [sympy.mathml(_, printer='presentation') for _ in response]
+
 import json, pathlib
-with open(pathlib.Path(__file__).resolve().parent / 'response.json', 'w') as _: _.write(json.dumps(response))
+pathlib.Path(__file__).resolve().parent.joinpath('response.json').write_text(json.dumps(response))
