@@ -10,4 +10,4 @@ response += sympy.mathml(potential.obj, printer='presentation'),
 response += sympy.mathml((base.grad*base.grad*potential).obj, printer='presentation'),
 
 import json, pathlib
-with open(pathlib.Path(__file__).resolve().parent / 'response.json', 'w') as _: _.write(json.dumps(response))
+pathlib.Path(__file__).resolve().parent.joinpath('response.json').write_text(json.dumps(response))
