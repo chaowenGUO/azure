@@ -11,4 +11,4 @@ base = galgebra.ga.Ga('\u0411', coords=(polar, azimuthal), X=X)
 response += sympy.mathml(sympy.integrate((X[0]**2 + X[1]**2) * base.E().norm(), (polar, 0, sympy.pi / 2), (azimuthal, 0, sympy.pi / 2)), printer='presentation'),
 
 import json, pathlib
-with open(pathlib.Path(__file__).resolve().parent / 'response.json', 'w') as _: _.write(json.dumps(response))
+pathlib.Path(__file__).resolve().parent.joinpath('response.json').write_text(json.dumps(response))
