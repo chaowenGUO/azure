@@ -8,5 +8,5 @@ jobs:
           with:
               python-version: '3.x'
         - run: |
-              pip install galgebra scipy gitpython
+              pip install galgebra scipy
               python build.py
