@@ -10,3 +10,8 @@ jobs:
         - run: |
               pip install galgebra scipy
               python build.py
+              git add -A
+              git config user.name dummy
+              git config user.email dummy
+              git commit --allow-empty-message -m ''
+              git push
